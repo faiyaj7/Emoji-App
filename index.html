@@ -14,7 +14,12 @@
     <title>Document</title>
   </head>
   <body>
-    <input type="text" placeholder="Search your emoji here" id="emoji_search" />
+    <input
+      type="text"
+      placeholder="Search your emoji here"
+      id="emoji_search"
+      onkeyup="inputQueries()"
+    />
     <ul id="list"></ul>
   </body>
   <script src="index.js"></script>
