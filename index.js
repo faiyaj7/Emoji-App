@@ -1,9 +1,6 @@
 let response = [];
 let input = document.querySelector("#emoji_search");
 let ul = document.getElementsByTagName("ul");
-// let example = document.querySelector(".example").fakeScroll({
-//   track: true,
-// });
 
 const emoji_api = async () => {
   data = await fetch(
@@ -19,6 +16,18 @@ const apiToList = async () => {
 apiToList();
 
 const formList = async (list) => {
+  let a = document.getElementsByTagName("h2");
+  console.log("The length of the h2 tag is " + a.length);
+  if (list.length == 0 && a.length == 0) {
+    let error_msg = document.createElement("h2");
+    error_msg.classList.add("error_msg");
+    error_msg.textContent = "No match found!!";
+    input.insertAdjacentElement("afterend", error_msg);
+  } else if (list.length > 0 && a.length >= 1) {
+    a = document.querySelector(".error_msg");
+    console.log(a);
+    a.remove(a);
+  }
   let font = `<i class="fa-solid fa-clipboard" style="color: #0fcc74;"></i>`;
   let ul = document.querySelector("#list");
   console.log(list);
@@ -55,8 +64,13 @@ const formList = async (list) => {
 const inputQueries = () => {
   let listOfFiltered = [];
   filter = input.value.toLowerCase();
-  console.log(filter);
 
+  if (filter.length == 0) {
+    ul[0].style.display = "none";
+    console.log(ul);
+  } else {
+    ul[0].style.display = "inline-block";
+  }
   if (ul[0].children.length > 0) {
     Array.from(ul[0].children).map((item) => item.remove());
   }
