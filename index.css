@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -5,8 +6,10 @@
 }
 
 body {
+  background: linear-gradient(to top right, #0aad6af7, #104391);
   width: 30%;
   margin: 100px auto;
+  height: 71vmin;
 }
 
 #emoji_search {
@@ -20,18 +23,26 @@ body {
 }
 
 #list {
-  /* border: 1px solid black; */
+  background: linear-gradient(to top right, #0aad6af7, #104391);
   list-style: none;
-  height: 500px;
+  /* height: 289px; */
+  display: inline-block;
   overflow-y: scroll;
+  min-height: 0px;
+  max-height: 400px;
+  width: 300px;
 }
 
 .single_row {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border: 1px solid red;
-  margin: 2px auto;
+  /* border: 1px solid red; */
+  margin: 8px auto;
+  /* border: 1px solid red; */
+  border: 0 0 5px 0;
+  padding: 0 0 10px 0;
+  border-bottom: 1px solid #17f197;
 }
 .single_row li {
   height: 35px;
@@ -40,11 +51,49 @@ body {
   align-items: center;
   user-select: none;
   margin: 0 0 0 5px;
+  border: 1px solid #17f197;
+  /* padding: 5px; */
+  padding: 5px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 2px #17f197;
 }
 
+.single_row p {
+  font-family: "Poppins", sans-serif;
+  font-size: 0.75rem;
+  border: 1px solid #17f197;
+  border-radius: 6px;
+  padding: 10px;
+  box-shadow: 2px 2px 2px #17f197;
+  margin: 0 10px 0 10px;
+}
 button {
   cursor: pointer;
   margin: 0 5px 0 0;
   border: none;
   outline: none;
+  background: transparent;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: linear-gradient(to top right, #0aad6af7, #104391);
+  border: 1px solid #17f197;
+  border-radius: 5px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  border-radius: 30px;
+  height: 40px;
+  background: #1cdf99b5;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #1cdf99b5;
 }

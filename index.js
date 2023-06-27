@@ -1,5 +1,9 @@
 let response = [];
 let input = document.querySelector("#emoji_search");
+let ul = document.getElementsByTagName("ul");
+// let example = document.querySelector(".example").fakeScroll({
+//   track: true,
+// });
 
 const emoji_api = async () => {
   data = await fetch(
@@ -15,12 +19,11 @@ const apiToList = async () => {
 apiToList();
 
 const formList = async (list) => {
-  let font = `<i class="fa-solid fa-clipboard fa-bounce"></i>`;
+  let font = `<i class="fa-solid fa-clipboard" style="color: #0fcc74;"></i>`;
   let ul = document.querySelector("#list");
   console.log(list);
-  // console.log(response);
+
   for (let i of list) {
-    // console.log("i");
     let li = document.createElement("li");
     let button = document.createElement("button");
     let div = document.createElement("div");
@@ -36,6 +39,14 @@ const formList = async (list) => {
       navigator.clipboard.writeText(i.character);
     });
 
+    button.addEventListener("mouseover", () => {
+      button.classList.add("fa-bounce");
+    });
+
+    button.addEventListener("mouseout", () => {
+      button.classList.remove("fa-bounce");
+    });
+
     div.append(li, p, button);
     ul.append(div);
   }
@@ -45,17 +56,17 @@ const inputQueries = () => {
   let listOfFiltered = [];
   filter = input.value.toLowerCase();
   console.log(filter);
-  let ul = document.getElementsByTagName("ul");
+
   if (ul[0].children.length > 0) {
     Array.from(ul[0].children).map((item) => item.remove());
   }
   for (let i of response) {
     a = i.slug;
     if (a.includes(filter)) {
+      i.slug = i.slug.split("-").join(" ");
       listOfFiltered.push(i);
     }
   }
-  // console.log(list);
+
   formList(listOfFiltered);
 };
-// formList();
